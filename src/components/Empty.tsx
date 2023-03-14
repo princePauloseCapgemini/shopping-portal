@@ -1,4 +1,4 @@
-import { Flex, Spinner, Text } from "@chakra-ui/react";
+import { Flex, Text } from "@chakra-ui/react";
 
 function Empty() {
   return (

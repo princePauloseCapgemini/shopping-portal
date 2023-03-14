@@ -25,7 +25,7 @@ function ShopBox() {
       .then((res) => {
         return res.data;
       });
-  }, [query]);
+  }, []);
 
   const { isLoading, isError, data }: ApiResponseProps = useQuery(
     "products",
