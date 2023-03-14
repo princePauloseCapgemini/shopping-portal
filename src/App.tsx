@@ -1,22 +1,28 @@
-import React from "react";
+import { lazy } from "react";
 
 import { ChakraProvider } from "@chakra-ui/react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "react-query";
 
-import { ShopBox } from "./pages/ShopBox";
 import { NotFound } from "./components/NotFound";
+
+const queryClient = new QueryClient({});
+
+const ShopBox = lazy(() => import("./pages/ShopBox"));
 
 function App() {
   return (
-    <ChakraProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<ShopBox />} />
-          {/* <Route path="/product/:id" element={<DashboardMessages />} /> */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </ChakraProvider>
+    <QueryClientProvider client={queryClient}>
+      <ChakraProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<ShopBox />} />
+            {/* <Route path="/product/:id" element={<DashboardMessages />} /> */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </ChakraProvider>
+    </QueryClientProvider>
   );
 }
 
