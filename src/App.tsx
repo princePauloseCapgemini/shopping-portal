@@ -17,7 +17,7 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<ShopBox />} />
-            {/* <Route path="/product/:id" element={<DashboardMessages />} /> */}
+            {/* <Route path="/product/:id" element={<ProductDetails />} /> */}
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
