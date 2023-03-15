@@ -32,8 +32,10 @@ export const Card: FC<CardProps> = memo(function Card({ item }) {
               {item.title}
             </Text>
           </Tooltip>
-          <Icon as={StarIcon} color="yellow" />
-          <Text>{`${item.rating.rate} (${item.rating.count})`}</Text>
+          <Flex>
+            <Icon as={StarIcon} color="yellow" />
+            <Text ml="2">{`${item.rating.rate} (${item.rating.count})`}</Text>
+          </Flex>
         </HStack>
         <HStack justifyContent="space-between">
           <Text
@@ -41,7 +43,10 @@ export const Card: FC<CardProps> = memo(function Card({ item }) {
             mt="4"
             fontWeight="bold"
           >{`$ ${item.price}`}</Text>
-          <Button background="#fadae9" onClick={() => navigate(`/product/${item.id}`)}>
+          <Button
+            background="#fadae9"
+            onClick={() => navigate(`/product/${item.id}`)}
+          >
             View Item
           </Button>
         </HStack>
