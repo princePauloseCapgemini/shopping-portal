@@ -8,8 +8,10 @@ import {
   Text,
   Icon,
   Tooltip,
+  Button,
 } from "@chakra-ui/react";
 import { StarIcon } from "@chakra-ui/icons";
+import { useNavigate } from "react-router-dom";
 
 import { ProductProps } from "../types";
 
@@ -18,6 +20,8 @@ interface CardProps {
 }
 
 export const Card: FC<CardProps> = memo(function Card({ item }) {
+  const navigate = useNavigate();
+
   return (
     <Flex justifyContent="center" alignItems="center" flexDirection="column">
       <Image w="auto" height="150px" src={item.image} objectFit="contain" />
@@ -31,7 +35,16 @@ export const Card: FC<CardProps> = memo(function Card({ item }) {
           <Icon as={StarIcon} color="yellow" />
           <Text>{`${item.rating.rate} (${item.rating.count})`}</Text>
         </HStack>
-        <Text fontSize="xs" mt="4" fontWeight="bold">{`$ ${item.price}`}</Text>
+        <HStack justifyContent="space-between">
+          <Text
+            fontSize="xs"
+            mt="4"
+            fontWeight="bold"
+          >{`$ ${item.price}`}</Text>
+          <Button background="#fadae9" onClick={() => navigate(`/product/${item.id}`)}>
+            View Item
+          </Button>
+        </HStack>
       </Box>
     </Flex>
   );

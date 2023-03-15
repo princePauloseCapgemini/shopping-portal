@@ -5,18 +5,12 @@ import axios from "axios";
 import _ from "lodash";
 import { useQuery } from "react-query";
 
-import { Header } from "../components/Header";
 import { SearchBox } from "../components/SearchBox";
 import { ProductsList } from "../components/ProductsList";
-import { ProductProps } from "../types";
+import { ProductListProps } from "../types";
+import { Banner } from "../components/Banner";
 
-interface ApiResponseProps {
-  isLoading: boolean;
-  isError: boolean;
-  data: ProductProps[] | undefined;
-}
-
-function ShopBox() {
+function Home() {
   const [query, setQuery] = useState("");
 
   const fetchProducts = useCallback(async () => {
@@ -27,10 +21,9 @@ function ShopBox() {
       });
   }, []);
 
-  const { isLoading, isError, data }: ApiResponseProps = useQuery(
+  const { isLoading, isError, data }: ProductListProps = useQuery(
     "products",
-    () => fetchProducts(),
-    { retry: false }
+    () => fetchProducts()
   );
 
   const products = useMemo(() => {
@@ -50,7 +43,7 @@ function ShopBox() {
 
   return (
     <Box>
-      <Header />
+      <Banner />
       <Container maxW="container.lg">
         <Flex justifyContent="center">
           <SearchBox onSearch={(query) => setQuery(query)} />
@@ -67,4 +60,4 @@ function ShopBox() {
   );
 }
 
-export default ShopBox;
+export default Home;

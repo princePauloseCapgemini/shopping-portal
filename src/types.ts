@@ -7,3 +7,15 @@ export interface ProductProps {
   rating: { rate: number; count: number };
   title: string;
 }
+
+export interface ProductListProps {
+  isLoading: boolean;
+  isError: boolean;
+  data: ProductProps[] | undefined;
+}
+
+export interface ProductSingleProps {
+  isLoading: boolean;
+  isError: boolean;
+  data: ProductProps | undefined;
+}
