@@ -1,4 +1,4 @@
-import { useCallback, useMemo } from "react";
+import { useCallback } from "react";
 
 import {
   Container,
@@ -18,7 +18,7 @@ import { useParams } from "react-router-dom";
 import Error from "../components/Error";
 import Empty from "../components/Empty";
 import Loader from "../components/Loader";
-import { ProductProps, ProductSingleProps } from "../types";
+import { ProductSingleProps } from "../types";
 
 function ProductDetails() {
   const { id } = useParams();
