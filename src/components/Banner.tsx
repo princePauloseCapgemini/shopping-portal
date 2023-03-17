@@ -10,10 +10,10 @@ import {
   Button,
 } from "@chakra-ui/react";
 
-import { useViewport } from "../helpers/useViewPort";
+import { useIsMobile } from "../helpers/useIsMobile";
 
 export const Banner: FC = () => {
-  const { isMobile } = useViewport();
+  const { isMobile } = useIsMobile();
 
   return (
     <Box w="100%" background="#fadae9" p="8" pb="12">
