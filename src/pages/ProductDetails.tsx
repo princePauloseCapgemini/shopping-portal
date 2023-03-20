@@ -1,4 +1,4 @@
-import { useCallback } from "react";
+import { useCallback, useMemo } from "react";
 
 import {
   Container,
@@ -14,14 +14,17 @@ import { StarIcon } from "@chakra-ui/icons";
 import axios from "axios";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
+import { useRecoilState } from "recoil";
 
 import Error from "../components/Error";
 import Empty from "../components/Empty";
 import Loader from "../components/Loader";
-import { ProductSingleProps } from "../types";
+import { ProductProps, ProductSingleProps } from "../types";
+import { cartState } from "../helpers/state";
 
 function ProductDetails() {
   const { id } = useParams();
+  const [cartItems, setCartItem] = useRecoilState(cartState);
 
   const fetchProducts = useCallback(async () => {
     return await axios
@@ -34,6 +37,11 @@ function ProductDetails() {
   const { isLoading, isError, data }: ProductSingleProps = useQuery(
     `product${id}`,
     () => fetchProducts()
+  );
+
+  const isAddedToCart = useMemo(
+    () => !!cartItems.find((item: ProductProps) => item?.id === data?.id),
+    [cartItems, data]
   );
 
   if (isLoading) return <Loader />;
@@ -67,7 +75,21 @@ function ProductDetails() {
               fontWeight="bold"
             >{`$ ${data.price}`}</Text>
           </HStack>
-          <Button my="4">Add to cart</Button>
+          {isAddedToCart ? (
+            <Button my="4" isDisabled>
+              Added to cart
+            </Button>
+          ) : (
+            <Button
+              my="4"
+              onClick={() => {
+                setCartItem([...cartItems, data]);
+                alert("Added to cart");
+              }}
+            >
+              Add to cart
+            </Button>
+          )}
         </Box>
       </Flex>
     </Container>
