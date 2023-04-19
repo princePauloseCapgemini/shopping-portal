@@ -21,7 +21,11 @@ export const Header: FC = () => {
           >
             Shopbox
           </Heading>
-          <Box cursor="pointer" onClick={() => setCartVisible(true)}>
+          <Box
+            id="cart-icon"
+            cursor="pointer"
+            onClick={() => setCartVisible(true)}
+          >
             <Image src="./cart.svg" />
           </Box>
         </HStack>

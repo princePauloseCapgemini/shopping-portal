@@ -46,6 +46,7 @@ export const Card: FC<CardProps> = memo(function Card({ item }) {
           <Button
             background="#fadae9"
             onClick={() => navigate(`/product/${item.id}`)}
+            id="view-item-button"
           >
             View Item
           </Button>

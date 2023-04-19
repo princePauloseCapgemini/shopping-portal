@@ -31,6 +31,7 @@ export const SearchBox: FC<SearchBoxProps> = ({ onSearch }) => {
       background="#fff"
       boxShadow="sm"
       borderRadius="lg"
+      id="search-box"
     >
       <InputLeftElement
         children={<Icon as={SearchIcon} fontSize="md" mt="2" />}
