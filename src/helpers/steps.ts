@@ -6,6 +6,10 @@ export const steps = [
     disableBeacon: true,
   },
   {
+    target: "#shop-now-button",
+    content: "Click here to go to the product listing section.",
+  },
+  {
     target: "#search-box",
     content: "Search for your favourite products listed below.",
   },

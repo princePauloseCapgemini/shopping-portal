@@ -37,6 +37,7 @@ export const Banner: FC = () => {
                   ?.getElementById?.("products-list-wrapper")
                   ?.scrollIntoView()
               }
+              id="shop-now-button"
             >
               Shop Now
             </Button>
